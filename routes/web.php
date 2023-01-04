@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(\route('home'));
+});
+
+\Illuminate\Support\Facades\Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'gestao', 'as' => 'management.', 'middleware' =>'auth'], function () {
+    Route::get('/criar', [App\Http\Controllers\ManagementController::class, 'create'])->name('create');
+    Route::post('/criar', [App\Http\Controllers\ManagementController::class, 'store'])->name('store');
 });
