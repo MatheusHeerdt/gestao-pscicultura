@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('fish', function (Blueprint $table) {
             $table->foreign(['user_id'])->references('id')->on('users');
+            $table->foreign(['tank_id'])->references('id')->on('tanks');
         });
     }
 
@@ -27,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('fish', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['tank_id']);
         });
     }
 };

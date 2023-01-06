@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('tanks', function (Blueprint $table){
            $table->id();
            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('fish_id');
-            $table->integer('volume');
+           $table->integer('volume');
+
+           $table->softDeletes();
+           $table->timestamps();
         });
     }
 
