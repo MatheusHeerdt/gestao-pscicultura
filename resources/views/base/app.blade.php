@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="public/assets/img/icons/icon-48x48.png"/>
 
-    <title>App Name - @yield('title')</title>
+    <title>Peixe simples - @yield('title')</title>
     <link rel=”stylesheet”
           href=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css”rel=”nofollow”
           integrity=”sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I” crossorigin=”anonymous”>
@@ -20,12 +20,8 @@
 </head>
 
 <body>
-@section('menu')
-        @extends('layouts.menu.main')
-@endsection
-@section('content')
 
-@endsection
+    @extendsfirst(['layouts.menu.main'])
 </body>
 
 <script src="{{asset('assets/js/app.js')}}"></script>

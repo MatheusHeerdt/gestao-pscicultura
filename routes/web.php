@@ -20,7 +20,8 @@ Route::get('/', function () {
 \Illuminate\Support\Facades\Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['prefix' => 'gestao', 'as' => 'management.', 'middleware' =>'auth'], function () {
+Route::group(['prefix' => 'gestao', 'as' => 'management.', 'middleware' => 'auth'], function () {
     Route::get('/criar', [App\Http\Controllers\ManagementController::class, 'create'])->name('create');
+    Route::get('', [App\Http\Controllers\ManagementController::class, 'index'])->name('index');
     Route::post('/criar', [App\Http\Controllers\ManagementController::class, 'store'])->name('store');
 });

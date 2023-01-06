@@ -20,6 +20,9 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('age');
             $table->integer('size');
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

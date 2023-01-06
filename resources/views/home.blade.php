@@ -1,5 +1,4 @@
 @extends('base.app')
-@section('sidebar')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
