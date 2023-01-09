@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tank extends Model
 {
+    protected $table = 'tanks';
+    protected $fillable = [
 
+    ];
 }

@@ -10,7 +10,7 @@
             </li>
 
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="{{route('management.index')}}">
+                <a class="sidebar-link" href="{{route('tanks.index')}}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Meus tanques</span>
                 </a>
             </li>

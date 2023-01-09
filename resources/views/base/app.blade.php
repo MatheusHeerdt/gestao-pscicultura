@@ -20,8 +20,18 @@
 </head>
 
 <body>
+<div class="wrapper">
+    @include('layouts.menu.sidebar')
+    <div class="main">
+        @include('layouts.menu.main')
+        <main class="content">
+            @yield('content')
+        </main>
+    </div>
 
-    @extendsfirst(['layouts.menu.main'])
+</div>
+
+
 </body>
 
 <script src="{{asset('assets/js/app.js')}}"></script>

@@ -1,7 +1,4 @@
-<div class="wrapper">
-@include('layouts.menu.sidebar')
-<div class="main">
-        <nav class="navbar navbar-expand navbar-light navbar-bg">
+ <nav class="navbar navbar-expand navbar-light navbar-bg">
             <a class="sidebar-toggle js-sidebar-toggle">
                 <i class="hamburger align-self-center"></i>
             </a>
@@ -37,5 +34,3 @@
                 </ul>
             </div>
         </nav>
-    </div>
-</div>
