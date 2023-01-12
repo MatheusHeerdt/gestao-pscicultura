@@ -23,7 +23,8 @@ class TankController extends Controller
         return view('tanks.index')->with([
             'tanks' => $this->tankRepository
                 ->where('user_id', Auth::user()->id)
-                ->get(),
+                ->paginate(15)
+            ,
         ]);
 
     }
