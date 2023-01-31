@@ -9,12 +9,20 @@
     <meta name="author" content="Matheus Heerdt"/>
     <meta name="keywords" content="psicultura, gestao, agro, agro-negocios, agricultura">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="{{asset('assets/img/icons/icon-48x48.png')}}"/>
+    {{--    <link rel="shortcut icon" href="{{asset('assets/img/icons/icon-48x48.png')}}"/>--}}
 
-    <title>Peixe simples - @yield('title')</title>
+    <title>@yield('title')</title>
 
-    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/app2.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/demo.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/demo.rtl.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler.rtl.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler-flags.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler-flags.rtl.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler-payments.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler-payments.rtl.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler-vendors.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabler-vendors.rtl.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -33,5 +41,6 @@
 
 </body>
 
-<script src="{{asset('assets/js/app.js')}}"></script>
+<script src="{{asset('assets/js/tabler.min.js')}}"></script>
+<script src="{{asset('assets/js/demo.min.js')}}"></script>
 </html>
