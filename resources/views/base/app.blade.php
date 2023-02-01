@@ -27,20 +27,28 @@
 </head>
 
 <body>
-<div class="wrapper">
+<div class="wrapper ">
     @include('layouts.menu.sidebar')
-    <div class="main">
+    <div class="main page-wrapper">
         @include('layouts.menu.main')
-        <main class="content">
+
+        <main class="content ">
+            <div class="container page-wrapper">
             @yield('content')
+            @include('layouts.footer')
+            </div>
         </main>
     </div>
 
 </div>
-
 
 </body>
 
 <script src="{{asset('assets/js/tabler.min.js')}}"></script>
 <script src="{{asset('assets/js/demo.min.js')}}"></script>
 </html>
+<style>
+    .navbar-expand-lg.navbar-vertical ~ .navbar, .navbar-expand-lg.navbar-vertical ~ .page-wrapper{
+        margin-right: 0 !important;
+    }
+</style>
