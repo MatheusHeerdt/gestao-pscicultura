@@ -21,8 +21,14 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'tanque', 'as' => 'tanks.', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'tanques', 'as' => 'tanks.', 'middleware' => 'auth'], function () {
     Route::get('/criar', [App\Http\Controllers\TankController::class, 'create'])->name('create');
     Route::get('', [App\Http\Controllers\TankController::class, 'index'])->name('index');
     Route::post('/criar', [App\Http\Controllers\TankController::class, 'store'])->name('store');
+});
+
+Route::group(['prefix' => 'peixes', 'as' => 'fish.', 'middleware' => 'auth'], function () {
+    Route::get('/criar', [App\Http\Controllers\FishController::class, 'create'])->name('create');
+    Route::get('', [App\Http\Controllers\FishController::class, 'index'])->name('index');
+    Route::post('/criar', [App\Http\Controllers\FishController::class, 'store'])->name('store');
 });

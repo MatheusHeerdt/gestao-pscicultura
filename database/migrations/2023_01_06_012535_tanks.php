@@ -17,7 +17,8 @@ return new class extends Migration
            $table->id();
            $table->unsignedBigInteger('user_id');
            $table->integer('volume');
-
+            $table->string('name')->default('padrão');
+            $table->unsignedBigInteger('fish_id');
            $table->softDeletes();
            $table->timestamps();
         });

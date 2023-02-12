@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-
     <script src="{{asset('assets/js/tabler.js')}}"></script>
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -40,7 +39,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -67,6 +65,17 @@
                             </div>
                         </div>
                     </form>
+                    <div class="row mb-3 mt-3">
+                        <label  class="col-md-4 col-form-label text-md-end"> Ainda não possui uma conta</label>
+                        <div class="col-md-6">
+                            <a class="btn btn-secondary" href="{{ __('register') }}">
+                                {{ __('Criar conta') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 m-2">
+
                 </div>
             </div>
         </div>

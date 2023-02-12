@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('age');
             $table->integer('size');
-            $table->unsignedBigInteger('tank_id');
 
             $table->timestamps();
             $table->softDeletes();
