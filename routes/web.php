@@ -24,11 +24,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'tanques', 'as' => 'tanks.', 'middleware' => 'auth'], function () {
     Route::get('/criar', [App\Http\Controllers\TankController::class, 'create'])->name('create');
     Route::get('', [App\Http\Controllers\TankController::class, 'index'])->name('index');
-    Route::post('/criar', [App\Http\Controllers\TankController::class, 'store'])->name('store');
+    Route::post('', [App\Http\Controllers\TankController::class, 'store'])->name('store');
+    Route::get('/{id}', [App\Http\Controllers\TankController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [App\Http\Controllers\TankController::class, 'update'])->name('update');
+    Route::delete('/{id}', [App\Http\Controllers\TankController::class, 'delete'])->name('delete');
 });
 
 Route::group(['prefix' => 'peixes', 'as' => 'fish.', 'middleware' => 'auth'], function () {
     Route::get('/criar', [App\Http\Controllers\FishController::class, 'create'])->name('create');
     Route::get('', [App\Http\Controllers\FishController::class, 'index'])->name('index');
-    Route::post('/criar', [App\Http\Controllers\FishController::class, 'store'])->name('store');
+    Route::post('', [App\Http\Controllers\FishController::class, 'store'])->name('store');
+    Route::get('/{id}', [App\Http\Controllers\FishController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [App\Http\Controllers\FishController::class, 'update'])->name('update');
+    Route::delete('/{id}', [App\Http\Controllers\FishController::class, 'delete'])->name('delete');
 });

@@ -24,31 +24,34 @@
     <link href="{{ asset('assets/css/tabler-vendors.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/tabler-vendors.rtl.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
 
-<body>
-<div class="wrapper ">
+<body class="d-flex flex-column min-vh-100">
+<div class="wrapper">
     @include('layouts.menu.sidebar')
     <div class="main page-wrapper">
         @include('layouts.menu.main')
-
-        <main class="content ">
+        <main class="content">
             <div class="container page-wrapper">
             @yield('content')
-            @include('layouts.footer')
             </div>
         </main>
     </div>
-
 </div>
-
+@include('layouts.footer')
 </body>
 
 <script src="{{asset('assets/js/tabler.min.js')}}"></script>
 <script src="{{asset('assets/js/demo.min.js')}}"></script>
+
 </html>
 <style>
     .navbar-expand-lg.navbar-vertical ~ .navbar, .navbar-expand-lg.navbar-vertical ~ .page-wrapper{
         margin-right: 0 !important;
+    }
+
+    .footer-text {
+        margin-left: 100px;
     }
 </style>

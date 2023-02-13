@@ -9,6 +9,9 @@ class Tank extends Model
 {
     protected $table = 'tanks';
     protected $fillable = [
-
+        'user_id',
+        'name',
+        'volume',
+        'fish_id'
     ];
 }

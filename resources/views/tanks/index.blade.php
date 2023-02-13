@@ -37,6 +37,17 @@
                         <tr>
                             <td>{{$tank->name}}</td>
                             <td class="d-none d-xl-table-cell">{{$tank->volume}}</td>
+                            <td class="row p-0 my-1 mx-0 justify-content-end">
+                                <div class="col-md-4">
+                                    <a href="{{route('tanks.edit',['id'=> $tank->id])}}" class="btn btn-secondary">editar</a>
+                                </div>
+                                <div class="col-md-4">
+                                    {!! Form::open(['route' => ['tanks.delete',$tank->id], 'method' => 'delete','class form-group' => 'm-0 p-0 col-md-6', 'id' => 'form-delete']) !!}
+                                    {{Form::submit('excluir', ['class'=>'btn btn-danger', 'id'=>'form-submit-button'])}}
+                                </div>
+                                {!! Form::close() !!}
+
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
