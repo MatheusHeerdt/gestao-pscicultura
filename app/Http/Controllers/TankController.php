@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Requests\TankRequest;
 use App\Repositories\FishRepository;
 use App\Repositories\TankRepository;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class TankController extends Controller
 {
@@ -23,6 +29,9 @@ class TankController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function index()
     {
         return view('tanks.index')->with([
@@ -33,6 +42,9 @@ class TankController extends Controller
         ]);
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function create()
     {
         $pisces = $this->fishRepository->pluck('name','id');
@@ -41,11 +53,50 @@ class TankController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    /**
+     * @param TankRequest $request
+     * @return RedirectResponse
+     * @throws ValidatorException
+     */
+    public function store(TankRequest $request)
     {
         $input = $request->all();
         $input['user_id'] = $request->user()->id;
         $this->tankRepository->create($input);
+
+        return redirect()->route('tanks.index');
+    }
+
+    /**
+     * @param $id
+     * @return Application|Factory|View
+     */
+    public function edit($id)
+    {
+        $pisces = $this->fishRepository->pluck('name','id');
+        $tank = $this->tankRepository->find($id);
+        return view('tanks.edit')->with([
+            'tank' => $tank,
+            'pisces' => $pisces
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     * @throws ValidatorException
+     */
+    public function update(Request $request, $id)
+    {
+        $input = $request->all();
+        $this->tankRepository->update($input, $id);
+        return redirect()->route('tanks.index');
+    }
+
+    public function delete($id)
+    {
+        $this->tankRepository->delete($id);
 
         return redirect()->route('tanks.index');
     }

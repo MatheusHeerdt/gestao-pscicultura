@@ -5,7 +5,7 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
             <a class="sidebar-brand" href="{{asset('assets/index.html')}}">
-                <span class="align-middle">Peixe simples</span>
+                <span class="align-middle">TanqueCheio</span>
             </a>
         </h1>
         <div class="navbar-nav flex-row d-lg-none">

@@ -5,7 +5,7 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href=".">
-                <img src="./static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                <img src="./static/logo.svg" width="110" height="32" alt="TanqueCheio" class="navbar-brand-image">
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
@@ -32,19 +32,18 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                    aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <span class="avatar avatar-sm "></span>
+{{--                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>--}}
                     <div class="d-none d-xl-block ps-2">
-                        <div><span class="text-dark">{{Auth::user()->name ?? null}}</span></div>
+                        <div><span>{{Auth::user()->name ?? null}}</span></div>
                     </div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-{{--                    <a href="#" class="dropdown-item">Set status</a>--}}
-{{--                    <a href="#" class="dropdown-item">Profile & account</a>--}}
-{{--                    <a href="#" class="dropdown-item">Feedback</a>--}}
-{{--                    <div class="dropdown-divider"></div>--}}
+                <div class="dropdown-menu dropdown-menu-end">
                     <a href="#" class="dropdown-item">Settings</a>
-                    <form method="POST" action="{{ route('logout') }}">
-                        <button class="dropdown-item">Sair</button>
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="dropdown-item" type="submit">Logout</button>
                     </form>
                 </div>
             </div>
