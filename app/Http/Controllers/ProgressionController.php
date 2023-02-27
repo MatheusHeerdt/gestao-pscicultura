@@ -56,7 +56,7 @@ class ProgressionController extends Controller
     {
         $input = $request->all();
         $input['user_id'] = $request->user()->id;
-        $input = $this->progressionService->calculateProgression($input);
+        $input = $this->progressionService->handleProgression($input);
         $this->progressionRepository->create($input);
         return redirect()->route('progression.index');
     }
