@@ -42,3 +42,12 @@ Route::group(['prefix' => 'peixes', 'as' => 'fish.', 'middleware' => 'auth'], fu
     Route::put('/{id}', [App\Http\Controllers\FishController::class, 'update'])->name('update');
     Route::delete('/{id}', [App\Http\Controllers\FishController::class, 'delete'])->name('delete');
 });
+
+Route::group(['prefix' => 'progresso', 'as' => 'progression.', 'middleware' => 'auth'], function () {
+    Route::get('/criar', [App\Http\Controllers\ProgressionController::class, 'create'])->name('create');
+    Route::get('', [App\Http\Controllers\ProgressionController::class, 'index'])->name('index');
+    Route::post('', [App\Http\Controllers\ProgressionController::class, 'store'])->name('store');
+    Route::get('/{id}', [App\Http\Controllers\ProgressionController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [App\Http\Controllers\ProgressionController::class, 'update'])->name('update');
+    Route::delete('/{id}', [App\Http\Controllers\ProgressionController::class, 'delete'])->name('delete');
+});

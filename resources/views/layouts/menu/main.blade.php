@@ -4,14 +4,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            <a href=".">
+            <a href="{{route('progression.index')}}">
                 <img src="./static/logo.svg" width="110" height="32" alt="TanqueCheio" class="navbar-brand-image">
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
             <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
                data-bs-toggle="tooltip" data-bs-placement="bottom">
-                <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -20,7 +19,6 @@
             </a>
             <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
                data-bs-toggle="tooltip" data-bs-placement="bottom">
-                <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -32,18 +30,19 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                    aria-label="Open user menu">
-                    <span class="avatar avatar-sm "></span>
-{{--                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>--}}
+                    <span class="avatar avatar-sm ">
+	                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                    </span>
                     <div class="d-none d-xl-block ps-2">
                         <div><span>{{Auth::user()->name ?? null}}</span></div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#" class="dropdown-item">Settings</a>
+                    <a href="#" class="dropdown-item">Configurações</a>
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button class="dropdown-item" type="submit">Logout</button>
+                        <button class="dropdown-item" type="submit">Sair</button>
                     </form>
                 </div>
             </div>

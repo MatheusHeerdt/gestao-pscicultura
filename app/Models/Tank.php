@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tank extends Model
@@ -28,5 +29,15 @@ class Tank extends Model
             'volume' => 'required|int',
             'fish_id' => 'required|int'
         ];
+    }
+
+    public function user() : HasOne
+    {
+        return $this->hasOne(User::class,'id', 'user_id');
+    }
+
+    public function fish() : HasOne
+    {
+        return $this->hasOne(Fish::class,'id', 'fish_id');
     }
 }

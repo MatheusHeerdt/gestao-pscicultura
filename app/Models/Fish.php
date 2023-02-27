@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Fish extends Model
@@ -19,7 +21,10 @@ class Fish extends Model
         'name',
     ];
 
-    public static function rules()
+    /**
+     * @return string[]
+     */
+    public static function rules(): array
     {
         return [
           'type' => 'required|int',
@@ -28,5 +33,15 @@ class Fish extends Model
           'size' => 'required|int',
           'name' => 'required|string'
         ];
+    }
+
+    public function user() : HasOne
+    {
+        return $this->hasOne(User::class,'id', 'user_id');
+    }
+
+    public function tank() : BelongsTo
+    {
+        return $this->belongsTo(Fish::class,'id', 'tank_id');
     }
 }

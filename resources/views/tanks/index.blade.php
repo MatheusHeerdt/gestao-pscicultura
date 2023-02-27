@@ -26,9 +26,8 @@
             <div class="table-responsive">
                 <table class="table card-table table-vcenter text-nowrap datatable">
                     <thead>
-
                     <tr>
-                        <th>Nome</th>
+                        <th class="d-none d-xl-table-cell">Nome</th>
                         <th class="d-none d-xl-table-cell">Volume</th>
                     </tr>
                     </thead>
