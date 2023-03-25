@@ -35,7 +35,7 @@ class ProgressionService
     public function handleProgression(array $input): array
     {
         $tank = $this->tankRepository->find($input['tank_id']);
-        $fish = $tank->fish();
+        $fish = $tank->fish;
         $input['fish_id'] = $tank->fish_id;
 
         return $this->calculateProgression($input, $fish);
