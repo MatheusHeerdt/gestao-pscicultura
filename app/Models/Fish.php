@@ -35,11 +35,17 @@ class Fish extends Model
         ];
     }
 
+    /**
+     * @return HasOne
+     */
     public function user() : HasOne
     {
         return $this->hasOne(User::class,'id', 'user_id');
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function tank() : BelongsTo
     {
         return $this->belongsTo(Fish::class,'id', 'tank_id');

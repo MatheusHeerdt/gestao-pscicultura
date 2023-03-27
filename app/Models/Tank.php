@@ -31,11 +31,17 @@ class Tank extends Model
         ];
     }
 
+    /**
+     * @return HasOne
+     */
     public function user() : HasOne
     {
         return $this->hasOne(User::class,'id', 'user_id');
     }
 
+    /**
+     * @return HasOne
+     */
     public function fish() : HasOne
     {
         return $this->hasOne(Fish::class,'id', 'fish_id');
