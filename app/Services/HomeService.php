@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use App\Repositories\FishRepository;
 use App\Repositories\ProgressionRepository;
 use App\Repositories\TankRepository;
+use Illuminate\Support\Collection;
 
 class HomeService
 {
@@ -27,32 +29,53 @@ class HomeService
 
     }
 
-    public function getUserTanksTotal()
+    /**
+     * @param User $user
+     * @return int
+     */
+    public function getUserTanksTotal(User $user): int
     {
-        return null;
+        return $user->tanks()->count();
     }
 
     /**
-     * @return
+     * @param int $userId
+     * @return int
      */
-    public function getUserPiscesTotal()
+    public function getUserPiscesTotal(int $userId): int
     {
-        return null;
+        return $this->fishRepository->getTotalByUser($userId);
     }
 
-    public function getUserPiscesGrowth()
+    /**
+     * @param int $userId
+     * @return array
+     */
+    public function getUserPiscesGrowth(int $userId): array
     {
-        return null;
+        $pisces =  $this->fishRepository->getPiscesGrowthByUser($userId);
+        $piscesArray = null;
+        foreach ($pisces as $fish) {
+            $piscesArray['pisces_growth'][] = $fish->size_avg;
+            $piscesArray['created_date'][] = $fish->created_date;
+            $piscesArray['created_month'][] = $fish->created_month;
+        }
+
+        return $piscesArray;
     }
 
-    public function getUserPiscesGrowthAverage()
+    public function getUserPiscesGrowthAverage($userId)
     {
-        return null;
+        return $this->fishRepository->getPiscesGrowthAverageByUser($userId);
     }
 
-    public function getUserPiscesAgeAverage()
+    /**
+     * @param int $userId
+     * @return null
+     */
+    public function getUserPiscesAgeAverage(int $userId)
     {
-        return null;
+        return $this->fishRepository->getPiscesAgeAverageByUser($userId);
     }
 
 

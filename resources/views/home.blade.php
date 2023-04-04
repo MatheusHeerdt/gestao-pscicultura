@@ -10,7 +10,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="subheader">Tanques</div>
                                 </div>
-                                <div class="h1">1</div>
+                                <div class="h1">{{$tanksTotal}}</div>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                                     <div class="subheader">Peixes</div>
                                 </div>
                                 <div class="d-flex align-items-baseline">
-                                    <div class="h1 mb-0 me-2">4,300</div>
+                                    <div class="h1 mb-0 me-2">{{$piscesTotal}}</div>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                     <div class="subheader">Idade Média Dos Peixes (meses)</div>
                                 </div>
                                 <div class="d-flex align-items-baseline">
-                                    <div class="h1 mb-0 me-2">6</div>
+                                    <div class="h1 mb-0 me-2">{{$piscesAgeAverage}}</div>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                     <div class="subheader">Tamanho Médio Dos Peixes(g)</div>
                                 </div>
                                 <div class="d-flex align-items-baseline">
-                                    <div class="h1 mb-0 me-2">200</div>
+                                    <div class="h1 mb-0 me-2">{{$piscesGrowthAverage}}</div>
                                 </div>
                             </div>
                         </div>
@@ -67,12 +67,17 @@
             </div>
         </div>
     </div>
-</div>
+<div id="pisces-growth" data-pisces-growth="{{ json_encode($piscesGrowth) }}"></div>
+<div id="creations" data-creations="{{ json_encode($creations) }}"></div>
+<div id="creation-months" data-creation-months="{{ json_encode($creationMonths) }}"></div>
 @endsection
 
 <script>
     // @formatter:off
     document.addEventListener("DOMContentLoaded", function () {
+        let piscesGrowth = JSON.parse(document.getElementById('pisces-growth').getAttribute('data-pisces-growth'));
+        let creations = JSON.parse(document.getElementById('creations').getAttribute('data-creations'));
+        let creationMonths = JSON.parse(document.getElementById('creation-months').getAttribute('data-creation-months'));
         window.ApexCharts && (new ApexCharts(document.getElementById('chart-mentions'), {
             chart: {
                 type: "bar",
@@ -100,7 +105,7 @@
             },
             series: [{
                 name: "Tamanho",
-                data: [1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 2, 12, 5, 8, 22, 6, 8, 6, 4, 1, 8, 24, 29, 51, 40, 47, 23, 26, 50, 26, 41, 22, 46, 47, 81, 46, 6]
+                data: piscesGrowth
             }],
             grid: {
                 padding: {
@@ -126,16 +131,14 @@
                 axisBorder: {
                     show: false,
                 },
-                type: 'datetime',
+                format: 'dd/mm/yyyy',
             },
             yaxis: {
                 labels: {
                     padding: 4
                 },
             },
-            labels: [
-                '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19', '2020-07-20', '2020-07-21', '2020-07-22', '2020-07-23', '2020-07-24', '2020-07-25', '2020-07-26'
-            ],
+            labels: creations,
             colors: ["#206bc4", "#79a6dc", "#bfe399"],
             legend: {
                 show: false,

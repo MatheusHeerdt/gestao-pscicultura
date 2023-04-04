@@ -63,9 +63,11 @@ class ProgressionController extends Controller
 
     public function edit($id)
     {
-        $calculation = $this->progressionRepository->find($id);
+        $progression = $this->progressionRepository->find($id);
+        $tanks = $this->tankRepository->pluck('name','id');
         return view('progression.edit')->with( [
-            'calculation' => $calculation
+            'progression' => $progression,
+            'tanks' => $tanks
         ]);
     }
 

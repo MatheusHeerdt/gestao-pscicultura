@@ -31,19 +31,25 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
-        $tanksTotal = $this->homeService->getUserTanksTotal();
-        $piscesTotal = $this->homeService->getUserPiscesTotal();
-        $piscesGrowth = $this->homeService->getUserPiscesGrowth();
-        $piscesGrowthAverage = $this->homeService->getUserPiscesGrowthAverage();
-        $piscesAgeAverage = $this->homeService->getUserPiscesAgeAverage();
+        $user = auth('web')->user();
+        $tanksTotal = $this->homeService->getUserTanksTotal($user);
+        $piscesTotal = $this->homeService->getUserPiscesTotal($user->id);
+        $growth = $this->homeService->getUserPiscesGrowth($user->id);
+        $piscesGrowth = $growth['pisces_growth'];
+        $creations = $growth['created_date'];
+        $creationMonths = $growth['created_month'];
+        $piscesAgeAverage = $this->homeService->getUserPiscesAgeAverage($user->id);
+        $piscesGrowthAverage = $this->homeService->getUserPiscesGrowthAverage($user->id);
+
         return view('home')->with([
             'user' => $user,
             'tanksTotal' => $tanksTotal,
             'piscesTotal' => $piscesTotal,
             'piscesGrowth' => $piscesGrowth,
+            'creations' => $creations,
+            'creationMonths' => $creationMonths,
+            'piscesAgeAverage' => $piscesAgeAverage,
             'piscesGrowthAverage' => $piscesGrowthAverage,
-            'piscesAgeAverage' => $piscesAgeAverage
         ]);
     }
 }
