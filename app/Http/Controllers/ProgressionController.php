@@ -74,6 +74,7 @@ class ProgressionController extends Controller
     public function update(Request $request,$id)
     {
         $input = $request->all();
+        $input = $this->progressionService->handleProgression($input);
         $this->progressionRepository->update($input, $id);
 
         return redirect()->route('progression.index');
