@@ -12,9 +12,7 @@
                 </div>
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
-                    <div>
-
-                    </div>
+                    {{Form::submit('Criar',['class' => 'btn btn-white'])}}
                 </div>
             </div>
         </div>

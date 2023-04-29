@@ -13,11 +13,9 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div>
-                   <span class="d-none d-sm-inline">
-                    <a href="{{route('tanks.create')}}" class="btn btn-white">
-                      Criar
-                    </a>
-                  </span>
+                        <a href="{{route('tanks.create')}}" class="btn btn-white">
+                          Criar
+                        </a>
                     </div>
                 </div>
             </div>
@@ -27,25 +25,21 @@
                 <table class="table card-table table-vcenter text-nowrap datatable">
                     <thead>
                     <tr>
-                        <th class="d-none d-xl-table-cell">Nome</th>
-                        <th class="d-none d-xl-table-cell">Volume</th>
+                        <th>Nome</th>
+                        <th>Volume</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($tanks as $tank)
                         <tr>
                             <td>{{$tank->name}}</td>
-                            <td class="d-none d-xl-table-cell">{{$tank->volume}}</td>
-                            <td class="row p-0 my-1 mx-0 justify-content-end">
-                                <div class="col-md-4">
-                                    <a href="{{route('tanks.edit',['id'=> $tank->id])}}" class="btn btn-secondary">editar</a>
-                                </div>
-                                <div class="col-md-4">
-                                    {!! Form::open(['route' => ['tanks.delete',$tank->id], 'method' => 'delete','class form-group' => 'm-0 p-0 col-md-6', 'id' => 'form-delete']) !!}
+                            <td>{{$tank->volume}}</td>
+                            <td>
+                                <a href="{{route('tanks.edit',['id'=> $tank->id])}}" class="d-inline-block btn btn-secondary">editar</a>
+                                {!! Form::open(['route' => ['tanks.delete',$tank->id], 'method' => 'delete','class' => 'd-inline-block form-group m-0 p-0 col-md-6', 'id' => 'form-delete']) !!}
                                     {{Form::submit('excluir', ['class'=>'btn btn-danger', 'id'=>'form-submit-button'])}}
-                                </div>
                                 {!! Form::close() !!}
-
                             </td>
                         </tr>
                     @endforeach
