@@ -49,9 +49,9 @@ class HomeService
 
     /**
      * @param int $userId
-     * @return array
+     * @return array|null
      */
-    public function getUserPiscesGrowth(int $userId): array
+    public function getUserPiscesGrowth(int $userId): ?array
     {
         $pisces =  $this->fishRepository->getPiscesGrowthByUser($userId);
         $piscesArray = null;
