@@ -35,9 +35,9 @@ class HomeController extends Controller
         $tanksTotal = $this->homeService->getUserTanksTotal($user);
         $piscesTotal = $this->homeService->getUserPiscesTotal($user->id);
         $growth = $this->homeService->getUserPiscesGrowth($user->id);
-        $piscesGrowth = $growth['pisces_growth'];
-        $creations = $growth['created_date'];
-        $creationMonths = $growth['created_month'];
+        $piscesGrowth = $growth['pisces_growth'] ?? null;
+        $creations = $growth['created_date'] ?? null;
+        $creationMonths = $growth['created_month'] ?? null;
         $piscesAgeAverage = $this->homeService->getUserPiscesAgeAverage($user->id);
         $piscesGrowthAverage = $this->homeService->getUserPiscesGrowthAverage($user->id);
 
