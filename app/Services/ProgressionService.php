@@ -37,6 +37,7 @@ class ProgressionService
         $tank = $this->tankRepository->find($input['tank_id']);
         $fish = $tank->fish;
         $input['fish_id'] = $tank->fish_id;
+        $input['size'] = $fish->size;
 
         return $this->calculateProgression($input, $fish);
     }
@@ -54,7 +55,7 @@ class ProgressionService
         $rationInfo = $this->getRationInfo($size);
         $input['ration_type'] = $rationInfo['type'];
         $input['daily_meals'] = $rationInfo['meals_per_day'];
-        $total = (($fish->quantity * $size) / 100) * $rationInfo['multiplier'];
+        $total = (($fish->quantity * $size) / 1000) * $rationInfo['multiplier'];
 
         $water_temperature = $input['water_temperature'];
 

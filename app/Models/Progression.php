@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Progression extends Model
 {
     use SoftDeletes;
+
     protected $table = 'fish_progression';
 
     protected $fillable = [
@@ -19,6 +20,7 @@ class Progression extends Model
         'meal_total',
         'daily_total',
         'water_temperature',
+        'size',
     ];
 
     /**
@@ -27,25 +29,33 @@ class Progression extends Model
     public static function rules(): array
     {
         return [
-            'daily_meals' => 'required|int',
-            'meal_total' => 'required|int',
-            'daily_total' => 'required|int',
-            'water_temperature' => 'required|int'
+            'water_temperature' => 'required|int',
+            'tank_id' => 'required|int'
         ];
     }
 
-    public function fish() : HasOne
+    public static function messages()
     {
-        return $this->hasOne(Fish::class,'id', 'fish_id');
+        return [
+
+            'water_temperature.required' => 'O campo temperatira da água é obrigatório!',
+            'water_temperature.int' => 'O campo temperatira da água é deve ser um número!',
+            'tank_id.required' => 'O campo tanque é obrigatório!'
+            ];
     }
 
-    public function tank() : HasOne
+    public function fish(): HasOne
     {
-        return $this->hasOne(Tank::class,'id', 'tank_id');
+        return $this->hasOne(Fish::class, 'id', 'fish_id');
     }
 
-    public function user() : HasOne
+    public function tank(): HasOne
     {
-        return $this->hasOne(User::class,'id', 'user_id');
+        return $this->hasOne(Tank::class, 'id', 'tank_id');
+    }
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProgressionRequest;
 use App\Repositories\FishRepository;
 use App\Repositories\ProgressionRepository;
 use App\Repositories\TankRepository;
@@ -16,17 +17,14 @@ class ProgressionController extends Controller
      */
     private $progressionRepository;
 
-    /** @var ProgressionService $progressionService @
-     */
-    private $progressionService;
+    /** @var ProgressionService $progressionService */
+    private ProgressionService $progressionService;
 
-    /** @var FishRepository $fishRepository @
-     */
-    private $fishRepository;
+    /** @var FishRepository $fishRepository */
+    private FishRepository $fishRepository;
 
-    /** @var TankRepository $tankRepository @
-     */
-    private $tankRepository;
+    /** @var TankRepository $tankRepository */
+    private TankRepository $tankRepository;
     public function __construct()
     {
         $this->progressionRepository = app(ProgressionRepository::class);
@@ -46,13 +44,13 @@ class ProgressionController extends Controller
 
     public function create()
     {
-        $tanks = $this->tankRepository->pluck('name','id');
+        $tanks = $this->tankRepository->getUserTanks( Auth::user());
         return view('progression.create')->with([
             'tanks' => $tanks
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ProgressionRequest $request)
     {
         $input = $request->all();
         $input['user_id'] = $request->user()->id;

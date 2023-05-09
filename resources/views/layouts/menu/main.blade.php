@@ -4,8 +4,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            <a href="{{route('progression.index')}}">
-                <img src="./static/logo.svg" width="110" height="32" alt="TanqueCheio" class="navbar-brand-image">
+            <a href="{{route('home')}}">
+                TanqueCheio
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">

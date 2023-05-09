@@ -41,8 +41,8 @@
                             <tr>
                                 <td class="d-none d-xl-table-cell">{{$calculation->fish->name}}</td>
                                 <td class="d-none d-xl-table-cell">{{$calculation->daily_meals}}</td>
-                                <td class="d-none d-xl-table-cell">{{$calculation->meal_total}} kg</td>
-                                <td class="d-none d-xl-table-cell">{{$calculation->daily_total}} kg</td>
+                                <td class="d-none d-xl-table-cell">{{number_format($calculation->meal_total/100,2,',','' )}} kg</td>
+                                <td class="d-none d-xl-table-cell">{{number_format($calculation->daily_total/100,2,',','' )}} kg</td>
                                 <td class="d-none d-xl-table-cell">{{$calculation->water_temperature}}ºC</td>
                                 <td class="d-none d-xl-table-cell">{{$calculation->created_at->format('d-m-Y')}}</td>
                                 <td class="row p-0 my-1 mx-0 justify-content-center">

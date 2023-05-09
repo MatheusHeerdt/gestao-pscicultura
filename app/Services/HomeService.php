@@ -53,7 +53,7 @@ class HomeService
      */
     public function getUserPiscesGrowth(int $userId): ?array
     {
-        $pisces =  $this->fishRepository->getPiscesGrowthByUser($userId);
+        $pisces =  $this->progressionRepository->getPiscesGrowthByUser($userId);
         $piscesArray = null;
         foreach ($pisces as $fish) {
             $piscesArray['pisces_growth'][] = $fish->size_avg;

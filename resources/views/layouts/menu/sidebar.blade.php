@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
-            <a class="sidebar-brand" href="{{route('progression.index')}}">
+            <a class="sidebar-brand" href="{{route('home')}}">
                 <span class="align-middle">TanqueCheio</span>
             </a>
         </h1>
