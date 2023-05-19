@@ -41,8 +41,8 @@
                             <tr>
                                 <td class="d-none d-xl-table-cell">{{$progression->fish->name}}</td>
                                 <td class="d-none d-xl-table-cell">{{$progression->daily_meals}}</td>
-                                <td class="d-none d-xl-table-cell">{{$progression->meal_total}} kg</td>
-                                <td class="d-none d-xl-table-cell">{{$progression->daily_total}} kg</td>
+                                <td class="d-none d-xl-table-cell">{{ number_format($progression->meal_total / 100, 2, ',', '.') }} kg</td>
+                                <td class="d-none d-xl-table-cell">{{ number_format($progression->daily_total / 100, 2, ',', '.') }} kg</td>
                                 <td class="d-none d-xl-table-cell">{{$progression->water_temperature}}ºC</td>
                                 <td class="d-none d-xl-table-cell">{{$progression->created_at->format('d-m-Y')}}</td>
                             </tr>

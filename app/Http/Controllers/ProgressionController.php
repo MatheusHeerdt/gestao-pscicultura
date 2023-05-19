@@ -59,10 +59,12 @@ class ProgressionController extends Controller
         return redirect()->route('progression.index');
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         $progression = $this->progressionRepository->find($id);
-        $tanks = $this->tankRepository->pluck('name','id');
+        $tanks = $this->tankRepository
+            ->where('user_id',  $request->user()->id)
+            ->pluck('name','id');
         return view('progression.edit')->with( [
             'progression' => $progression,
             'tanks' => $tanks

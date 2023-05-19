@@ -39,8 +39,8 @@
                             <tr>
                                 <td>{{$calculation->fish->name}}</td>
                                 <td>{{$calculation->daily_meals}}</td>
-                                <td>{{$calculation->meal_total}} kg</td>
-                                <td>{{$calculation->daily_total}} kg</td>
+                                <td>{{ number_format($calculation->meal_total / 100, 2, ',', '.') }} kg</td>
+                                <td>{{ number_format($calculation->daily_total / 100, 2, ',', '.') }} kg</td>
                                 <td>{{$calculation->water_temperature}}ºC</td>
                                 <td>{{$calculation->created_at->format('d/m/Y')}}</td>
                                 <td>
