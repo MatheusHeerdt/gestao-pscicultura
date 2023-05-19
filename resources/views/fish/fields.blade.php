@@ -16,11 +16,11 @@
                 {!! Form::number('quantity',$fish->quantity ?? null, $attributes =['class' => 'form-control']) !!}
             </div>
             <div class="col-md-4">
-                {!! Form::Label('age','Idade',$attributes = ['class'=> 'mb-2'])!!}
+                {!! Form::Label('age','Idade (meses)',$attributes = ['class'=> 'mb-2'])!!}
                 {!! Form::number('age',$fish->age ?? null, $attributes =['class' => 'form-control']) !!}
             </div>
             <div class="col-md-4">
-                {!! Form::Label('size','Tamanho',$attributes = ['class'=> 'mb-2'])!!}
+                {!! Form::Label('size','Tamanho (g)',$attributes = ['class'=> 'mb-2'])!!}
                 {!! Form::number('size',$fish->size ?? null, $attributes =['class' => 'form-control']) !!}
             </div>
         </div>
