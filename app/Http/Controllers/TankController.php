@@ -45,9 +45,11 @@ class TankController extends Controller
     /**
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(Request $request)
     {
-        $pisces = $this->fishRepository->pluck('name','id');
+        $pisces = $this->fishRepository
+            ->where('user_id',  $request->user()->id)
+            ->pluck('name','id');
         return view('tanks.create')->with([
             'pisces' => $pisces
         ]);
@@ -71,9 +73,11 @@ class TankController extends Controller
      * @param $id
      * @return Application|Factory|View
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        $pisces = $this->fishRepository->pluck('name','id');
+        $pisces = $this->fishRepository
+            ->where('user_id',  $request->user()->id)
+            ->pluck('name','id');
         $tank = $this->tankRepository->find($id);
         return view('tanks.edit')->with([
             'tank' => $tank,
